@@ -27,5 +27,12 @@ You have to have neovim installed first btw
 3. When neovim opens it should start installing the plugins automatically using lazy. I think there are some things you might have to install your self from github but I can't remember them so when that happens lmk. 
 
 # What it looks like 
+## Dashboard
 ![image](https://github.com/kwabenadarkwa/nvim/assets/59177804/619d4c58-5967-4026-b087-9b5cc2f83b87)
+
+## Code
+![image](https://github.com/kwabenadarkwa/nvim/assets/59177804/9a92e23b-b173-4de7-8e56-cea417843396)
+
+## Telescope
+![image](https://github.com/kwabenadarkwa/nvim/assets/59177804/0a3a60fd-7816-48a5-aebe-fdffe9ce5928)
 
