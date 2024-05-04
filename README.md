@@ -16,7 +16,7 @@ To use my configuration, follow these steps:
 You have to have neovim installed first btw 
 1. Clone this repository to your Neovim configuration directory:
    ```bash
-   git clone https://github.com/your-username/nvim-config.git ~/.config/nvim
+   git clone https://github.com/kwabenadarkwa/nvim.git ~/.config/nvim
    ```
 - NB: If you already have an nvim in your .config directory, you would have to remove it before running ☝️
 
