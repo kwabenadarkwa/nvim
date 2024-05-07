@@ -1,3 +1,4 @@
+-- if you get a problem here you should probably update your version of nvim.
 vim.keymap.set('i','jj','<Esc>')
 vim.keymap.set('v','ii','<Esc>')
 vim.keymap.set('n',';',':')
