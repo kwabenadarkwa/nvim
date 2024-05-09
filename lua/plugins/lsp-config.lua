@@ -15,6 +15,7 @@ return {
 					"unocss",
 					"tsserver",
 					"pylyzer",
+          "gopls",
 				},
 			})
 		end,
@@ -31,6 +32,7 @@ return {
 			lspconfig.unocss.setup({ capabilites = capabilities })
 			lspconfig.tsserver.setup({ capabilites = capabilities })
 			lspconfig.pylyzer.setup({ capabilites = capabilities })
+			lspconfig.gopls.setup({ capabilites = capabilities })
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
