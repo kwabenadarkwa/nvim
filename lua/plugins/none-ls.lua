@@ -11,12 +11,11 @@ return {
         null_ls.builtins.formatting.prettier,
         null_ls.builtins.formatting.black,
         null_ls.builtins.formatting.isort,
-        -- null_ls.builtins.diagnostics.gci,
-        -- null_ls.builtins.formatting.golangci-lint,
-        --null_ls.builtins.diagnostics.cpplint,
-        --  This is the syntax for adding linters 
+        null_ls.builtins.formatting.gofumpt,
+        null_ls.builtins.formatting.goimports_reviser,
+        null_ls.builtins.formatting.golines,
+       --  This is the syntax for adding linters 
         require("none-ls.formatting.eslint_d"),  -- requires none-ls-extras.nvim
-        -- require("none-ls.diagnostics.gci"),  -- requires none-ls-extras.nvim
         require("none-ls.diagnostics.cpplint"),   -- requires none-ls-extras.nvim
       },
     })
