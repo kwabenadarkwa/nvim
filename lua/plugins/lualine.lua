@@ -4,7 +4,10 @@ return {
     require("lualine").setup({
       options = {
         theme = "dracula",
+        icons_enabled = true,
+        compnent_separators = "|",
+        section_separators = " ",
       },
-    })
+   })
   end,
 }
