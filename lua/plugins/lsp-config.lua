@@ -15,8 +15,6 @@ return {
 					"unocss",
 					"tsserver",
 					"pylyzer",
-					"gopls",
-					"bashls",
 				},
 			})
 		end,
@@ -56,19 +54,6 @@ return {
 					pylyzer = { completeUnimported = true },
 				},
 			})
-			lspconfig.gopls.setup({
-				capabilites = capabilities,
-				settings = {
-					gopls = { completeUnimported = true },
-				},
-			})
-			lspconfig.bashls.setup({
-				capabilites = capabilities,
-				settings = {
-					bashls = { completeUnimported = true },
-				},
-			})
-
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
