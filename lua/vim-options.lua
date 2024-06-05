@@ -19,3 +19,7 @@ vim.cmd("set number")
 vim.cmd("set relativenumber")
 vim.cmd("set rtp+=/opt/homebrew/opt/fz")
 vim.g.mapleader = " "
+-- Disable virtual_text since it's redundant due to lsp_lines.
+vim.diagnostic.config({
+  virtual_text = false,
+})
