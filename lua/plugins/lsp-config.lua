@@ -29,6 +29,7 @@ return {
           "unocss",
           "tsserver",
           "pyright",
+          "gopls",
         },
         automatic_installation = true,
       })
@@ -76,6 +77,12 @@ return {
         capabilites = capabilities,
         settings = {
           pyright = { completeUnimported = true },
+        },
+      })
+      lspconfig.gopls.setup({
+        capabilites = capabilities,
+        settings = {
+          gopls = { completeUnimported = true },
         },
       })
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})

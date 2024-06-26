@@ -1,5 +1,5 @@
 -- local pattern = "%.md$"
--- TODO: finish making sure that it doesn't show in readme files 
+-- TODO: finish making sure that it doesn't show in readme files
 --
 -- if (string.match(vim.api.nvim_buf_get_name(0), pattern) ~= ".md") then
 vim.cmd("set cc=80")
@@ -23,3 +23,4 @@ vim.g.mapleader = " "
 vim.diagnostic.config({
   virtual_text = false,
 })
+vim.cmd("autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup='Visual', timeout=600}")
