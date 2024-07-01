@@ -21,6 +21,6 @@ vim.cmd("set rtp+=/opt/homebrew/opt/fz")
 vim.g.mapleader = " "
 -- Disable virtual_text since it's redundant due to lsp_lines.
 vim.diagnostic.config({
-  virtual_text = false,
+	virtual_text = false,
 })
-vim.cmd("autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup='Visual', timeout=600}")
+vim.cmd("autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup='Visual', timeout=500}")
