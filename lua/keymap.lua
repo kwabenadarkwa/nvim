@@ -18,7 +18,6 @@ vim.keymap.set("n", "<leader>rn", function()
   return ":IncRename " .. vim.fn.expand("<cword>")
 end, { expr = true })
 
-
 --keymap for trouble to view all the errors in my project
 vim.keymap.set("n", "<leader>tt", function()
   require("trouble").toggle()

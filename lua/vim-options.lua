@@ -2,7 +2,7 @@
 -- TODO: finish making sure that it doesn't show in readme files
 --
 -- if (string.match(vim.api.nvim_buf_get_name(0), pattern) ~= ".md") then
-vim.cmd("set cc=80")
+vim.cmd("set cc=90")
 -- else
 -- 	print("shut up")
 -- 	vim.cmd("set cc=0")
