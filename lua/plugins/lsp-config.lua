@@ -3,6 +3,7 @@ return {
 		"williamboman/mason.nvim",
 		config = function()
 			require("mason").setup({
+				log_level = vim.log.levels.DEBUG,
 				ui = {
 					icons = {
 						package_installed = "✓",
@@ -87,16 +88,32 @@ return {
 				},
 			})
 			lspconfig.omnisharp.setup({
-				capabilites = capabilities,
-				enable_roslyn_analysers = true,
-				enable_import_completion = true,
-				organize_imports_on_format = true,
-				enable_decompilation_support = true,
-				filetypes = { "cs", "vb", "csproj", "sln", "slnx", "props", "csx", "targets" },
+				cmd = {
+					-- "/opt/homebrew/bin/mono",
+					"dotnet",
+					-- "/Users/kwabenadarkwa/.local/share/nvim/mason/packages/omnisharp/omnisharp",
+					"/Users/kwabenadarkwa/.local/share/nvim/mason/packages/omnisharp/libexec/OmniSharp.dll",
+					-- "/opt/homebrew/bin/omnisharp",
+				},
 				settings = {
-					omnisharp = { completeUnimported = true },
+					FormattingOptions = {
+						EnableEditorConfigSupport = true,
+						OrganizeImports = true,
+					},
+					MsBuild = {
+						LoadProjectsOnDemand = nil,
+					},
+					RoslynExtensionsOptions = {
+						EnableAnalyzersSupport = true,
+						EnableImportCompletion = true,
+						AnalyzeOpenDocumentsOnly = nil,
+					},
+					Sdk = {
+						IncludePrereleases = true,
+					},
 				},
 			})
+
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			-- vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 			vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", {})
