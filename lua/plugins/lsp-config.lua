@@ -28,7 +28,6 @@ return {
 					"lua_ls",
 					"clangd",
 					"unocss",
-					"tsserver",
 					"pyright",
 					"gopls",
 					"omnisharp",
