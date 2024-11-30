@@ -1,26 +1,34 @@
 return {
-  "nvim-treesitter/nvim-treesitter",
-  build = ":TSUpdate",
-  ensure_installed = {
-    "lua",
-    "xml",
-    "http",
-    "json",
-    "graphql",
-    "sql",
-    "python",
-    "go",
-    "typescript",
-    "bash",
-    "markdown_inline",
-    "regex",
-  },
-  config = function()
-    local config = require("nvim-treesitter.configs")
-    config.setup({
-      auto_install = true,
-      highlight = { enable = true },
-      indent = { enable = true },
-    })
-  end,
+	"nvim-treesitter/nvim-treesitter",
+	build = ":TSUpdate",
+	event = { "BufNewFile", "BufReadPost" },
+	ensure_installed = {
+		"lua",
+		"xml",
+		"html",
+		"http",
+		"json",
+		"graphql",
+		"sql",
+		"python",
+		"go",
+		"typescript",
+		"javascript",
+		"bash",
+		"markdown_inline",
+		"regex",
+		"tsx",
+		"css",
+	},
+	config = function()
+		local config = require("nvim-treesitter.configs")
+		config.setup({
+			auto_install = true,
+			highlight = {
+				enable = true,
+				additional_vim_regex_highlighting = { "astro" },
+			},
+			indent = { enable = true },
+		})
+	end,
 }

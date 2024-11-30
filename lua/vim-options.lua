@@ -24,3 +24,10 @@ vim.diagnostic.config({
 	virtual_text = false,
 })
 vim.cmd("autocmd TextYankPost * silent! lua vim.highlight.on_yank {higroup='Visual', timeout=500}")
+
+-- astro settings
+vim.filetype.add({
+	extension = {
+		astro = "astro",
+	},
+})
