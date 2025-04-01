@@ -5,7 +5,8 @@ return {
 			-- this it not i
 			require("gitsigns").setup()
 			vim.keymap.set("n", "<leader>gp", "<cmd>Gitsigns preview<CR>")
-			vim.keymap.set("n", "<leader>tb", "<cmd>Gitsigns toggle_current_line_blame<CR>")
+			vim.keymap.set("n", "<leader>tlb", "<cmd>Gitsigns toggle_current_line_blame<CR>")
+			vim.keymap.set("n", "<leader>tb", "<cmd>Gitsigns blame<CR>")
 		end,
 	},
 	{

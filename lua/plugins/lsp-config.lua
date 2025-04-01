@@ -76,10 +76,10 @@ return {
           unocss = { completeUnimported = true },
         },
       })
-      lspconfig.tsserver.setup({
+      lspconfig.ts_ls.setup({
         capabilites = capabilities,
         settings = {
-          tsserver = { completeUnimported = true },
+          ts_ls = { completeUnimported = true },
         },
       })
       lspconfig.pyright.setup({
@@ -133,6 +133,8 @@ return {
         },
       })
 
+      -- this is because I want to use noice
+      -- vim.keymap.set("n", "K", require("noice.lsp").hover(), {})
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
       -- vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", {})
