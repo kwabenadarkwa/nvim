@@ -9,6 +9,7 @@ return {
       vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
       -- you should have ripgrep installed before this works
       vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+      vim.keymap.set("n", "<leader>wg", builtin.current_buffer_fuzzy_find, {})
     end,
   },
   {

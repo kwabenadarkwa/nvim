@@ -126,7 +126,7 @@ return {
 				capabilities = capabilities,
 				cmd = {
 					"dotnet",
-					"/Users/kwabenadarkwa/.local/share/nvim/mason/packages/omnisharp/libexec/OmniSharp.dll",
+					"/Users/kwabenadarkwa/.local/share/nvim/mason/packages/omnisharp/OmniSharp.dll",
 				},
 				handlers = {
 					["textDocument/definition"] = require("omnisharp_extended").definition_handler,

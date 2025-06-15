@@ -19,10 +19,25 @@ vim.cmd("set number")
 vim.cmd("set relativenumber")
 vim.cmd("set rtp+=/opt/homebrew/opt/fz")
 vim.g.mapleader = " "
-vim.diagnostic.config({
-  virtual_text = false,
-})
+-- vim.diagnostic.config({
+--   virtual_text = false,
+-- })
 
+vim.diagnostic.config({
+	virtual_text = false,
+	float = {
+		focusable = false,
+		style = "minimal",
+		border = "rounded",
+		source = "if_many",
+		header = "",
+		prefix = "",
+	},
+	signs = true,
+	underline = true,
+	update_in_insert = true,
+	severity_sort = false,
+})
 -- Show line diagnostics automatically in hover window
 -- Add a command to toggle diagnostic virtual text
 -- local diagnosticVirtualTextEnable = false
@@ -65,27 +80,26 @@ vim.diagnostic.config({
 --   desc = "Toggle diagnostic virtual text display"
 -- }
 -- )
--- vim.cmd("ToggleDiagnosticVirtualText --quite") -- Since my default value is set to false, this is equivalent to enabling it by default
--- vim.o.updatetime = 250
--- -- opens the diagnostic dialog box after focusing on it for 250 mil seconds
--- vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
--- {
---   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
---   config = function()
---     require("lsp_lines").setup({
---       vim.diagnostic.config({
---         virtual_text = true,
---       }),
---       vim.keymap.set("", "<leader>ll", require("lsp_lines").toggle, { desc = "toggle lsp_lines" }),
---     })
---   end,
--- },
+--  -- opens the diagnostic dialog box after focusing on it for 250 mil seconds
+--  vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
+--  {
+--    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+--    config = function()
+--      require("lsp_lines").setup({
+--        vim.diagnostic.config({
+--          virtual_text = true,
+--        }),
+--        vim.keymap.set("", "<leader>ll", require("lsp_lines").toggle, { desc = "toggle lsp_lines" }),
+--      })
+--    end,
+--  }
 
 vim.cmd("autocmd TextYankPost * silent! lua vim.highlight.on_yank {higrcup='Visual', timeout=500}")
 
+vim.opt.conceallevel = 2
 -- astro settings
 vim.filetype.add({
-  extension = {
-    astro = "astro",
-  },
+	extension = {
+		astro = "astro",
+	},
 })

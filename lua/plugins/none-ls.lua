@@ -33,10 +33,10 @@ return {
         null_ls.builtins.formatting.goimports_reviser,
         null_ls.builtins.formatting.golines,
         null_ls.builtins.formatting.csharpier,
-        null_ls.builtins.diagnostics.eslint_d,
+        -- null_ls.builtins.formatting.eslint_d,
         -- null_ls.builtins.formatting.beautysh,
         -- --  This is the syntax for adding linters
-        -- require("none-ls.formatting.eslint_d"), -- requires none-ls-extras.nvim
+        require("none-ls.formatting.eslint_d"), -- requires none-ls-extras.nvim
         require("none-ls.formatting.beautysh"), -- requires none-ls-extras.nvim
         require("none-ls.diagnostics.cpplint"), -- requires none-ls-extras.nvim
       },
