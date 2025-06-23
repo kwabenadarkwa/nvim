@@ -1,3 +1,26 @@
+local function get_python_path(workspace)
+    -- Check if VIRTUAL_ENV is set
+    local venv = vim.fn.getenv("VIRTUAL_ENV")
+    if venv ~= vim.NIL and vim.fn.executable(venv .. "/bin/python") == 1 then
+        return venv .. "/bin/python"
+    end
+
+    -- Common venv directory names
+    local venv_names = { ".venv", "venv", ".virtualenv", "env" }
+    -- Use LSP utilities to get the workspace root
+    local root = workspace or vim.lsp.buf.list_workspace_folders()[1] or vim.fn.getcwd()
+
+    -- Look for venv in the project root
+    for _, name in ipairs(venv_names) do
+        local path = root .. "/" .. name .. "/bin/python"
+        if vim.fn.executable(path) == 1 then
+            return path
+        end
+    end
+
+    -- Fallback to system Python
+    return vim.fn.exepath("python3") or "python3"
+end
 return {
 	{
 		"williamboman/mason.nvim",

@@ -97,9 +97,11 @@ vim.diagnostic.config({
 vim.cmd("autocmd TextYankPost * silent! lua vim.highlight.on_yank {higrcup='Visual', timeout=500}")
 
 vim.opt.conceallevel = 2
+
 -- astro settings
 vim.filetype.add({
 	extension = {
 		astro = "astro",
 	},
 })
+
