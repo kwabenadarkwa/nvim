@@ -17,7 +17,7 @@ vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
 vim.cmd("set number")
 vim.cmd("set relativenumber")
-vim.cmd("set virtualedit=all")
+-- vim.cmd("set virtualedit=all")
 vim.cmd("set rtp+=/opt/homebrew/opt/fz")
 vim.g.mapleader = " "
 -- vim.diagnostic.config({
