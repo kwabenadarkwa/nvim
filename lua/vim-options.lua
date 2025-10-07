@@ -95,14 +95,12 @@ vim.diagnostic.config({
 --    end,
 --  }
 
+vim.keymap.set("n", "<leader>t", vim.cmd.UndotreeToggle)
 vim.cmd("autocmd TextYankPost * silent! lua vim.highlight.on_yank {higrcup='Visual', timeout=500}")
 
 vim.opt.conceallevel = 2
 
 -- astro settings
-vim.filetype.add({
-	extension = {
-		astro = "astro",
-	},
-})
-
+vim.filetype.add({ extension = {
+	astro = "astro",
+} })
