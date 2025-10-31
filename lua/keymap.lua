@@ -19,3 +19,4 @@ vim.keymap.set("n", "<leader>rn", function()
 end, { expr = true })
 
 vim.keymap.set("n", "<leader>fo", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+vim.keymap.set("n", "<leader>ee", "oif err != nil {<CR><Tab>return err<CR>}<Esc>")

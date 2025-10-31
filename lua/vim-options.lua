@@ -8,7 +8,6 @@ vim.cmd("set relativenumber")
 vim.cmd("set rtp+=/opt/homebrew/opt/fz")
 vim.g.mapleader = " "
 -- vim.keymap.set("n", "<leader>ee", "oif err != nil {<CR>}<Esc>0return err<Esc>")
-vim.keymap.set("n", "<leader>ee", "oif err != nil {<CR><Tab>return err<CR>}<Esc>")
 
 
 vim.diagnostic.config({
