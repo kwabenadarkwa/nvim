@@ -18,5 +18,9 @@ vim.keymap.set("n", "<leader>rn", function()
 	return ":IncRename " .. vim.fn.expand("<cword>")
 end, { expr = true })
 
+-- adding things to the quick fix list
+vim.keymap.set('n', '<leader>cn', ':cnext<CR>')
+vim.keymap.set('n', '<leader>cp', ':cprev<CR>')
+
 vim.keymap.set("n", "<leader>fo", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 vim.keymap.set("n", "<leader>ee", "oif err != nil {<CR><Tab>return err<CR>}<Esc>")
