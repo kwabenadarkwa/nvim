@@ -18,6 +18,21 @@ return {
 							["q"] = actions.close,
 						},
 					},
+					preview = {
+						filetype_hook = function(filepath, bufnr, opts)
+							local is_image = function(path)
+								local image_extensions = { "png", "jpg", "jpeg", "gif", "webp", "bmp" }
+								local split_path = vim.split(path:lower(), ".", { plain = true })
+								local extension = split_path[#split_path]
+								return vim.tbl_contains(image_extensions, extension)
+							end
+							if is_image(filepath) then
+								require("snacks").image.buf.attach(bufnr, { src = filepath })
+								return false
+							end
+							return true
+						end,
+					},
 				},
 				pickers = {
 					find_files = {
