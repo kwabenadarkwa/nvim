@@ -27,6 +27,7 @@ vim.diagnostic.config({
 })
 
 vim.keymap.set("n", "<leader>t", vim.cmd.UndotreeToggle)
+vim.keymap.set("n", "<leader>db", vim.cmd.DBUI)
 vim.cmd("autocmd TextYankPost * silent! lua vim.highlight.on_yank {higrcup='Visual', timeout=500}")
 
 vim.opt.conceallevel = 2

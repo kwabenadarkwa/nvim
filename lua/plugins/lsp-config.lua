@@ -1,26 +1,3 @@
-local function get_python_path(workspace)
-	-- Check if VIRTUAL_ENV is set
-	local venv = vim.fn.getenv("VIRTUAL_ENV")
-	if venv ~= vim.NIL and vim.fn.executable(venv .. "/bin/python") == 1 then
-		return venv .. "/bin/python"
-	end
-
-	-- Common venv directory names
-	local venv_names = { ".venv", "venv", ".virtualenv", "env" }
-	-- Use LSP utilities to get the workspace root
-	local root = workspace or vim.lsp.buf.list_workspace_folders()[1] or vim.fn.getcwd()
-
-	-- Look for venv in the project root
-	for _, name in ipairs(venv_names) do
-		local path = root .. "/" .. name .. "/bin/python"
-		if vim.fn.executable(path) == 1 then
-			return path
-		end
-	end
-
-	-- Fallback to system Python
-	return vim.fn.exepath("python3") or "python3"
-end
 return {
 	{
 		"williamboman/mason.nvim",
@@ -85,9 +62,9 @@ return {
 			--   - lua/plugins/lsp-config.lua:79 _in_ **config**
 			--   - init.lua:2
 			-- require("lspconfig")
-			local lspconfig = require("lspconfig")
+			local lspconfig = vim.lsp.config
 			lspconfig.lua_ls.setup({
-				capabilites = capabilities,
+				capabilities = capabilities,
 				settings = {
 					lua_ls = { completeUnimported = true },
 					Lua = {
@@ -114,44 +91,44 @@ return {
 				},
 			})
 			lspconfig.clangd.setup({
-				capabilites = capabilities,
+				capabilities = capabilities,
 				settings = {
 					clangd = { completeUnimported = true },
 				},
 			})
 			lspconfig.unocss.setup({
-				capabilites = capabilities,
+				capabilities = capabilities,
 				settings = {
 					unocss = { completeUnimported = true },
 				},
 			})
 			lspconfig.tailwindcss.setup({
-				capabilites = capabilities,
+				capabilities = capabilities,
 				settings = {
 					tailwindcss = { completeUnimported = true },
 				},
 			})
 			lspconfig.eslint.setup({
-				capabilites = capabilities,
+				capabilities = capabilities,
 				settings = {
 					eslint = { completeUnimported = true },
 				},
 			})
 			lspconfig.ts_ls.setup({
-				capabilites = capabilities,
+				capabilities = capabilities,
 				settings = {
 					ts_ls = { completeUnimported = true },
 				},
 			})
 			lspconfig.pyright.setup({
-				capabilites = capabilities,
+				capabilities = capabilities,
 				settings = {
 					pyright = { completeUnimported = true },
 				},
 			})
 			-- TODO: might have to come back here to understanding what's going on if something goes wrong
 			lspconfig.gopls.setup({
-				capabilites = capabilities,
+				capabilities = capabilities,
 				settings = {
 					gopls = {
 						analyses = {
@@ -204,7 +181,7 @@ return {
 				},
 			})
 			lspconfig.astro.setup({
-				capabilites = capabilities,
+				capabilities = capabilities,
 				settings = {
 					astro = { completeUnimported = true },
 				},
