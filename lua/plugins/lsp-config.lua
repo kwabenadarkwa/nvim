@@ -51,83 +51,56 @@ return {
 		"neovim/nvim-lspconfig",
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			--             Failed to run `config` for nvim-lspconfig
-			--
-			-- .../Cellar/neovim/0.11.4/share/nvim/runtime/lua/vim/lsp.lua:388: name: expected non-wildcard string, got nil
-			--
-			-- # stacktrace:
-			--   - vim/shared.lua:0 _in_ **validate**
-			--   - /opt/homebrew/Cellar/neovim/0.11.4/share/nvim/runtime/lua/vim/lsp.lua:388 _in_ **validate_config_name**
-			--   - /opt/homebrew/Cellar/neovim/0.11.4/share/nvim/runtime/lua/vim/lsp.lua:463 _in_ **config**
-			--   - lua/plugins/lsp-config.lua:79 _in_ **config**
-			--   - init.lua:2
-			-- require("lspconfig")
-			local lspconfig = vim.lsp.config
-			lspconfig.lua_ls.setup({
+
+			-- Using native vim.lsp.config API (Neovim 0.11+)
+			vim.lsp.config.lua_ls = {
 				capabilities = capabilities,
 				settings = {
-					lua_ls = { completeUnimported = true },
 					Lua = {
 						hint = {
 							enable = true,
 						},
 						runtime = {
-							-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
 							version = "LuaJIT",
 						},
 						diagnostics = {
-							-- Get the language server to recognize the `vim` global
 							globals = { "vim" },
 						},
 						workspace = {
-							-- Make the server aware of Neovim runtime files
 							library = vim.api.nvim_get_runtime_file("", true),
 						},
-						-- Do not send telemetry data containing a randomized but unique identifier
 						telemetry = {
 							enable = false,
 						},
 					},
 				},
-			})
-			lspconfig.clangd.setup({
+			}
+
+			vim.lsp.config.clangd = {
 				capabilities = capabilities,
-				settings = {
-					clangd = { completeUnimported = true },
-				},
-			})
-			lspconfig.unocss.setup({
+			}
+
+			vim.lsp.config.unocss = {
 				capabilities = capabilities,
-				settings = {
-					unocss = { completeUnimported = true },
-				},
-			})
-			lspconfig.tailwindcss.setup({
+			}
+
+			vim.lsp.config.tailwindcss = {
 				capabilities = capabilities,
-				settings = {
-					tailwindcss = { completeUnimported = true },
-				},
-			})
-			lspconfig.eslint.setup({
+			}
+
+			vim.lsp.config.eslint = {
 				capabilities = capabilities,
-				settings = {
-					eslint = { completeUnimported = true },
-				},
-			})
-			lspconfig.ts_ls.setup({
+			}
+
+			vim.lsp.config.ts_ls = {
 				capabilities = capabilities,
-				settings = {
-					ts_ls = { completeUnimported = true },
-				},
-			})
-			lspconfig.pyright.setup({
+			}
+
+			vim.lsp.config.pyright = {
 				capabilities = capabilities,
-				settings = {
-					pyright = { completeUnimported = true },
-				},
-			})
-			-- TODO: might have to come back here to understanding what's going on if something goes wrong
-			lspconfig.gopls.setup({
+			}
+
+			vim.lsp.config.gopls = {
 				capabilities = capabilities,
 				settings = {
 					gopls = {
@@ -147,8 +120,9 @@ return {
 						usePlaceholders = true,
 					},
 				},
-			})
-			lspconfig.omnisharp.setup({
+			}
+
+			vim.lsp.config.omnisharp = {
 				capabilities = capabilities,
 				cmd = {
 					"dotnet",
@@ -161,7 +135,6 @@ return {
 					["textDocument/implementation"] = require("omnisharp_extended").implementation_handler,
 				},
 				settings = {
-					omnisharp = { completeUnimported = true },
 					FormattingOptions = {
 						EnableEditorConfigSupport = true,
 						OrganizeImports = true,
@@ -179,26 +152,34 @@ return {
 						IncludePrereleases = true,
 					},
 				},
-			})
-			lspconfig.astro.setup({
-				capabilities = capabilities,
-				settings = {
-					astro = { completeUnimported = true },
-				},
-			})
+			}
 
-			-- this is because I want to use noice
-			-- vim.keymap.set("n", "K", require("noice.lsp").hover(), {})
+			vim.lsp.config.astro = {
+				capabilities = capabilities,
+			}
+
+			-- Enable all configured LSP servers
+			vim.lsp.enable("lua_ls")
+			vim.lsp.enable("clangd")
+			vim.lsp.enable("unocss")
+			vim.lsp.enable("tailwindcss")
+			vim.lsp.enable("eslint")
+			vim.lsp.enable("ts_ls")
+			vim.lsp.enable("pyright")
+			vim.lsp.enable("gopls")
+			vim.lsp.enable("omnisharp")
+			vim.lsp.enable("astro")
+
+			-- Keymaps
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-			-- vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", {})
 			vim.keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", {})
 			vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", {})
 			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
 			vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, {})
 			vim.keymap.set("n", "<leader>rs", "<cmd>LspRestart<CR>", {})
 
-			local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+			local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 			for type, icon in pairs(signs) do
 				local hl = "DiagnosticSign" .. type
 				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
