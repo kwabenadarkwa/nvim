@@ -13,9 +13,11 @@ return {
 			"hrsh7th/cmp-cmdline",
 			"saadparwaiz1/cmp_luasnip", --autocomplete from luasnip
 			"L3MON4D3/LuaSnip",
+			"onsails/lspkind.nvim",
 		},
 		config = function()
 			local cmp = require("cmp")
+			local lspkind = require("lspkind")
 			require("luasnip.loaders.from_vscode").lazy_load()
 
 			cmp.setup.filetype({ "sql" }, {
@@ -42,10 +44,20 @@ return {
 					["<C-e>"] = cmp.mapping.abort(),
 					["<CR>"] = cmp.mapping.confirm({ select = true }),
 				}),
+				formatting = {
+					format = lspkind.cmp_format({
+						mode = "symbol_text",
+						maxwidth = 50,
+						ellipsis_char = "...",
+						symbol_map = {
+							Supermaven = "",
+						},
+					}),
+				},
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" }, -- For luasnip users.
-					{ name = "supamaven" },
+					{ name = "supermaven" },
 				}, {
 					{ name = "buffer" },
 					{ name = "path" },
